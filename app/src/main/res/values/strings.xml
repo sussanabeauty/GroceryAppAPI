@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GroceryAppAPI</string>
+    <string name="user_name">Username / Email</string>
+    <string name="password">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="address">Address</string>
+    <string name="license_agreement">By pressing Sign Up you agree to the Term of<br>Service and Privacy Policy</br> </string>
+    <string name="mobile">Phone Number</string>
+    <string name="full_name">Name</string>
+    <string name="confirm_password">Cofirmed Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+</resources>

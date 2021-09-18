@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="large_margin">85dp</dimen>
+    <dimen name="common_padding">16dp</dimen>
+    <dimen name="header_margin">35dp</dimen>
+    <dimen name="splah_margin">120dp</dimen>
+    <dimen name="text_size">35dp</dimen>
+</resources>
