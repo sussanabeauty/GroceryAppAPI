@@ -7,4 +7,5 @@
     <dimen name="header_margin">35dp</dimen>
     <dimen name="splah_margin">120dp</dimen>
     <dimen name="text_size">35dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
 </resources>

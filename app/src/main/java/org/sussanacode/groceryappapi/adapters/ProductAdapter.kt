@@ -8,6 +8,7 @@ import org.sussanacode.groceryappapi.databinding.HolderProductBinding
 import org.sussanacode.groceryappapi.databinding.HolderSubcategoryBinding
 import org.sussanacode.groceryappapi.holder.ProductHolder
 import org.sussanacode.groceryappapi.holder.SubcategoryHolder
+import org.sussanacode.groceryappapi.model.Cart
 import org.sussanacode.groceryappapi.model.Product
 import org.sussanacode.groceryappapi.model.Subcategory
 
@@ -35,5 +36,11 @@ class ProductAdapter (val productList: ArrayList<Product>, val imageLoader: Imag
 
     fun setOnProductClickListener(listener: (Product, Int) -> Unit) {
         productClickListener = listener
+    }
+
+    lateinit var addProducttoCartListener: (Product, Int) -> Unit
+
+    fun setOnAddProductListener(listener: (Product, Int) -> Unit) {
+        addProducttoCartListener = listener
     }
 }
