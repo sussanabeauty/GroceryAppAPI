@@ -6,14 +6,26 @@
 
 
     <TextView
-        android:text="Orders Page"
+        android:id="@+id/tvheader"
+        android:text="List of Orders"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:gravity="center"
+        android:layout_marginTop="@dimen/header_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOrdeplaced"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvheader"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

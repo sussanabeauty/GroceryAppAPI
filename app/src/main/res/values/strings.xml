@@ -8,8 +8,8 @@
     <string name="license_agreement">By pressing Sign Up you agree to the Term of<br>Service and Privacy Policy</br> </string>
     <string name="mobile">Phone Number</string>
     <string name="full_name">Name</string>
-    <string name="confirm_password">Cofirmed Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="confirm_password">Confirmed Password</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>

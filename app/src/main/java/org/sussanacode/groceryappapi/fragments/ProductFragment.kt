@@ -49,11 +49,23 @@ class ProductFragment : Fragment() {
         binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack() }
 
 
+
+        //getaddproductbutlistener
+       setUpAddProductListener()
+
         return binding.root
 
     }
 
-    fun getSubcategoryID(subcategory: Subcategory){ subcatID = subcategory.subId }
+    private fun setUpAddProductListener() {
+        productAdapter.setOnProductClickListener { product, position ->
+
+        }
+    }
+
+    fun getSubcategoryID(subcategory: Subcategory){
+
+        subcatID = subcategory.subId }
 
 
 
@@ -90,6 +102,14 @@ class ProductFragment : Fragment() {
                         binding.rvproduct .adapter = productAdapter
 
 
+                        //addproduct to cart
+                        productAdapter.setOnAddProductListener { product, position ->
+                            if(this::onProductClickListener.isInitialized){
+                                onProductClickListener(product)
+                            }
+                        }
+
+
                     }catch (e: JSONException){
                         e.printStackTrace()
                         Toast.makeText(context, "failed to retrieve Product object", Toast.LENGTH_LONG).show()
@@ -104,6 +124,13 @@ class ProductFragment : Fragment() {
         requestQueue.add(arrrequest)
 
     }
+
+
+    fun setOnClickAddProduct (listener: (Product) -> Unit){
+        onProductClickListener = listener
+    }
+    lateinit var  onProductClickListener: (Product) -> Unit
+
 
 
     val cache = object : ImageLoader.ImageCache {

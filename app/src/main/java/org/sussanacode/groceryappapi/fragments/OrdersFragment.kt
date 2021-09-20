@@ -11,6 +11,7 @@ import org.sussanacode.groceryappapi.databinding.FragmentOrdersBinding
 class OrdersFragment : Fragment() {
 
     lateinit var binding: FragmentOrdersBinding
+//    lateinit var orderList: ArrayList<>
 
 
     override fun onCreateView(
