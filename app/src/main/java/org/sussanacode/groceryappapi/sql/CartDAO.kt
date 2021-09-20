@@ -23,7 +23,7 @@ class CartDAO(val context: Context) {
 
             cartvalues.put("product_name", cart.productname)
             cartvalues.put("quantity", cart.quantity)
-            cartvalues.put("productImage", cart.productImage)
+            cartvalues.put("product_image", cart.productImage)
             cartvalues.put("product_price", cart.productprice)
 
             val productID: Long = mydb.insert("cart", null, cartvalues)
@@ -51,6 +51,7 @@ class CartDAO(val context: Context) {
                 val cart = Cart(productID, productname, productqty, productimg, productprice)
                 cartList.add(cart)
             }
+            cartCursor.close()
             return cartList
 
         }catch(se: SQLException){
@@ -75,7 +76,6 @@ class CartDAO(val context: Context) {
         cartvalues.put("product_price", cart.productprice)
 
         val rowsUpdated = mydb.update("cart", cartvalues, "productID=${cart.productID}", null)
-
         return rowsUpdated == 1
     }
 }

@@ -65,28 +65,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <CheckBox
-        android:id="@+id/cbcheckme"
-        android:text="Remember me"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/common_margin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etpassword"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
 
     <TextView
         android:id="@+id/tvforgotpass"
         android:text="Forgot password?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:gravity="center"
         android:textColor="#8c8c8c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_margin"
         app:layout_constraintTop_toBottomOf="@id/etpassword"
-        app:layout_constraintStart_toEndOf="@id/cbcheckme"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
@@ -99,7 +89,7 @@
         android:layout_marginTop="@dimen/common_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbcheckme"
+        app:layout_constraintTop_toBottomOf="@id/tvforgotpass"
         />
 
 
@@ -108,11 +98,11 @@
         android:text="Sign In"
         android:gravity="center"
         android:layout_width="350dp"
-        android:layout_margin="@dimen/splah_margin"
+        android:layout_margin="@dimen/large_margin"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:background="@drawable/signin_button_background"
-        app:layout_constraintTop_toBottomOf="@id/cbcheckme"
+        app:layout_constraintTop_toBottomOf="@id/tvforgotpass"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />

@@ -47,7 +47,6 @@ class CategoryFragment: Fragment() {
     }
 
 
-
     private fun getCatData() {
         val arrrequest = JsonObjectRequest(
             Request.Method.GET, CATEGORY_URL, null,
@@ -59,7 +58,6 @@ class CategoryFragment: Fragment() {
                 }else {
 
                     try{
-                        Log.d(":Error::", "${response.getBoolean("error")}")
                         val categorydata = response.getJSONArray("data")
 
                         for(i in 0 until categorydata.length()) {

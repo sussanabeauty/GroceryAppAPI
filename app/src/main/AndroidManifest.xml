@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryAppAPI.NoActionBar">
-
-<!--        android:theme="@style/Theme.GroceryAppAPI">-->
-
+        <activity
+            android:name=".AddProductToCartActivity"
+            android:exported="true" />
+        <!-- android:theme="@style/Theme.GroceryAppAPI"> -->
         <activity
             android:name=".HomeScreenActivity"
             android:exported="true" />

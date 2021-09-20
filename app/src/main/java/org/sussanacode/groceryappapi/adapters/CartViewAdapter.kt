@@ -20,26 +20,39 @@ class CartViewAdapter (val cartItems: ArrayList<Cart>, val imageLoader: ImageLoa
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        holder.bind(cartItems[position], imageLoader)
 
-//        if(this::productIncrementCartListener.isInitialized) {
-//            holder.itemView.setOnClickListener {
-//                productIncrementCartListener(cartItems[position], position)
-//            }
-//        }
+        cartItems?.let {
+            holder.bind(cartItems[position], imageLoader)
+
+
+            if(this::productAddOnCartListener.isInitialized) {
+                holder.itemView.setOnClickListener { btnIncreaseproduct ->
+                    productAddOnCartListener(it[position], position)
+                }
+            }
+
+            if(this::productMinusCartListener.isInitialized) {
+                holder.itemView.setOnClickListener { btnIncreaseproduct ->
+                    productMinusCartListener(it[position], position)
+
+                }
+            }
+
+        }
+
     }
 
     override fun getItemCount() = cartItems.size
 
-    lateinit var productIncrementCartListener: (Product, Int) -> Unit
-    lateinit var productdecrementCartListener: (Product, Int) -> Unit
+    lateinit var productAddOnCartListener: (Cart, Int) -> Unit
+    lateinit var productMinusCartListener: (Cart, Int) -> Unit
 
 
-    fun setOnIncrementProductListener(listener: (Product, Int) -> Unit){
-        productIncrementCartListener = listener
+    fun setOnAddOnProductListener(listener: (Cart, Int) -> Unit){
+        productAddOnCartListener = listener
     }
 
-    fun setOndecrementProductListener(listener: (Product, Int) -> Unit){
-        productdecrementCartListener = listener
+    fun setOnMinusProductListener(listener: (Cart, Int) -> Unit){
+        productMinusCartListener = listener
     }
 }

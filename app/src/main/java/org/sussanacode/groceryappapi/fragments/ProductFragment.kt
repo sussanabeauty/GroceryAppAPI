@@ -2,7 +2,6 @@ package org.sussanacode.groceryappapi.fragments
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.util.LruCache
 import android.view.LayoutInflater
 import android.view.View
@@ -49,19 +48,13 @@ class ProductFragment : Fragment() {
         binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack() }
 
 
-
         //getaddproductbutlistener
-       setUpAddProductListener()
+      // setUpAddProductListener()
 
         return binding.root
 
     }
 
-    private fun setUpAddProductListener() {
-        productAdapter.setOnProductClickListener { product, position ->
-
-        }
-    }
 
     fun getSubcategoryID(subcategory: Subcategory){
 
@@ -71,9 +64,7 @@ class ProductFragment : Fragment() {
 
     private fun getProductdetails() {
 
-
         val productUrl = "https://grocery-second-app.herokuapp.com/api/products/sub/${subcatID}"
-        Log.d("Sub Cat url", "$productUrl")
         val arrrequest = JsonObjectRequest(
             Request.Method.GET, productUrl, null,
 
@@ -92,14 +83,13 @@ class ProductFragment : Fragment() {
                             val productprice = productObj.getDouble("price")
                             val productImg = productObj. getString("image");
                             val productimgUrl = "https://rjtmobile.com/grocery/images/$productImg"
-                            Log.d("product Image Url", " $productimgUrl")
                             val subcatID = productObj.getInt("subId")
 
                             val product = Product(subcatID, productname, productimgUrl, productprice)
                             products.add(product)
                         }
                         productAdapter = ProductAdapter(products, imageLoader)
-                        binding.rvproduct .adapter = productAdapter
+                        binding.rvproduct.adapter = productAdapter
 
 
                         //addproduct to cart
@@ -108,7 +98,6 @@ class ProductFragment : Fragment() {
                                 onProductClickListener(product)
                             }
                         }
-
 
                     }catch (e: JSONException){
                         e.printStackTrace()
@@ -132,7 +121,6 @@ class ProductFragment : Fragment() {
     lateinit var  onProductClickListener: (Product) -> Unit
 
 
-
     val cache = object : ImageLoader.ImageCache {
 
         val lruCache: LruCache<String, Bitmap> = LruCache(100)
@@ -147,4 +135,5 @@ class ProductFragment : Fragment() {
             }
         }
     }
+
 }

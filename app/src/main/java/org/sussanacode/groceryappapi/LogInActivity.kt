@@ -79,12 +79,12 @@ class LogInActivity : AppCompatActivity() {
                 if(response.has("token")){
                     val username = response.getJSONObject("user").getString("email")
                     val pass = response.getJSONObject("user").getString("password")
-                    //Log.d("Token", "$username and $pass")
+
                     val sharedPreferences = getSharedPreferences("user_checked", MODE_PRIVATE)
                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
                     editor.putString("User_Key", username)
                     editor.putString("Pass_Key", pass)
-                    editor.commit()
+                    editor.apply()
                     Toast.makeText(baseContext, "User successfully logged in ", Toast.LENGTH_LONG).show()
                     startActivity(Intent(baseContext, HomeScreenActivity::class.java))
                     finish()

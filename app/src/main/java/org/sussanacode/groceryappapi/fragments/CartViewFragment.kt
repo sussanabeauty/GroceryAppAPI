@@ -34,9 +34,9 @@ class CartViewFragment: Fragment() {
     lateinit var cartAdapter: CartViewAdapter
 //    lateinit var cartDao: CartDAO
 
-    lateinit var cart: Cart
 
-    val cartList: ArrayList<Cart> = ArrayList()
+    //val cartList: ArrayList<Cart> = ArrayList()
+    var cartList: ArrayList<Cart>? = null
     var productname: String? = null;
 
 
@@ -51,21 +51,29 @@ class CartViewFragment: Fragment() {
         requestQueue = Volley.newRequestQueue(context)
         imageLoader = ImageLoader(requestQueue, cache)
 
-
-
         binding.rvcartitem.layoutManager = LinearLayoutManager(context)
 
         //addProducts()
         getProductDetails()
-       // getcartdetails()
 
         binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack() }
-
 
         return binding.root
     }
 
-    //getproductbyname
+    private fun setUpMinusProduct() {
+        cartAdapter.setOnMinusProductListener { cart, position ->
+            cart.quantity--
+        }
+    }
+
+    private fun setUpPlusProduct() {
+        cartAdapter.setOnAddOnProductListener { cart, position ->
+            cart.quantity++
+
+        }
+    }
+
 
     fun getproductByName(product: Product){
         productname = product.productName
@@ -73,11 +81,10 @@ class CartViewFragment: Fragment() {
 
 
     private fun getProductDetails() {
-
-//        https://grocery-second-app.herokuapp.com/api/products/search/Chicken%20Hariyali%20150%20grams
         if(productname != null){
             val productUrl = "https://grocery-second-app.herokuapp.com/api/products/search/${productname}"
-            Log.d("Sub Cat url", "$productUrl")
+            Log.d("Cart url", "$productUrl")
+
 
 
             //read data
@@ -86,9 +93,12 @@ class CartViewFragment: Fragment() {
 
                 Response.Listener<JSONObject>{ response ->
 
+
                     if(response.getBoolean("error")){
+
                         Toast.makeText(context, " product data was no retrieve $response", Toast.LENGTH_LONG).show()
                     }else {
+                        var cartitems: ArrayList<Cart> = ArrayList<Cart>()
                         try{
                             val productdetails = response.getJSONArray("data")
 
@@ -99,27 +109,58 @@ class CartViewFragment: Fragment() {
                                 val productprice = productObj.getDouble("price")
                                 val productImg = productObj. getString("image");
                                 val productimgUrl = "https://rjtmobile.com/grocery/images/$productImg"
-                                Log.d("product Image Url", " $productimgUrl")
 
-                                val quantity = cart.quantity + 1
-                                val cart = Cart(0, productname, quantity, productimgUrl, productprice)
-                                cartList.add(cart)
+                                var cart: Cart? = null
+                                //refactor code
+                                var quantity = (cart?.quantity ?: + 1 )
+                                cart = Cart(0, productname, quantity, productimgUrl, productprice)
+                                cartList?.add(cart)
 
-                                //save to database
+                                //getquantity(cartList)
+
                                 val saveProducttoCartDB = CartDAO(requireContext()).addToCart(cart)
-                                Log.d("CartDB", "${saveProducttoCartDB.toString()}")
+
+                                //read data from cartDB into recyclerview
+                                cartList = CartDAO(requireContext()).getItemsInCart()!!
+                                Log.d(" Cart Data from DB", "Cart item retrieved successfully" )
+
+
                             }
 
-                            cartAdapter = CartViewAdapter(cartList, imageLoader)
-                            binding.rvcartitem .adapter = cartAdapter
+
+                            var subtotal = 0.0
+                            for (i in cartList!!){
+                                 subtotal += i.productprice
+                            }
+
+                            cartList?.let {
+                                cartAdapter = CartViewAdapter(it, imageLoader)
+                                binding.rvcartitem.adapter = cartAdapter
+                                binding.tvsubtotal.text = "Subtotal: $${subtotal.toString()}"
+                            }
+
+
 
 
 //                            //addproduct to cart
-//                            productAdapter.setOnAddProductListener { product, position ->
-//                                if(this::onProductClickListener.isInitialized){
-//                                    onProductClickListener(product)
+//                            cartAdapter.setOnAddOnProductListener { cart, position ->
+//                                if(this::onPlusClickListener.isInitialized){
+//                                    Log.d("Plus Sign", "$onPlusClickListener")
+//                                    cart.quantity++
 //                                }
+//
 //                            }
+//
+//                            cartAdapter.setOnMinusProductListener { cart, position ->
+//                                if(this::onMinusClickListener.isInitialized){
+//                                    cart.quantity--
+//                                    Log.d("Minus Sign", "$onMinusClickListener")
+//                                }
+//
+//                            }
+
+                            setUpPlusProduct()
+                            setUpMinusProduct()
 
 
                         }catch (e: JSONException){
@@ -131,11 +172,8 @@ class CartViewFragment: Fragment() {
                     error.printStackTrace()
                     Toast.makeText(context, "Error $error", Toast.LENGTH_LONG).show()
                 }
-
             )
             requestQueue.add(arrrequest)
-
-
 
         }else{
             return
@@ -143,18 +181,33 @@ class CartViewFragment: Fragment() {
 
     }
 
-    private fun addProducts() {
+    private fun getquantity(cartList: ArrayList<Cart>?) {
+        var quantity = 0
+        var productname = ""
+
+        val cartMap: MutableMap<Cart, Int> = java.util.LinkedHashMap()
+
+        if (cartList != null) {
+            for(cart in cartList){
+                if(cartMap.containsKey(cart)){
+                    cartMap[cart] = cartMap[cart]!! + 1
+                }else{
+                    cartMap[cart] = 1
+                }
+            }
+        }
 
 
+        for((k, v) in cartMap){
+            productname = k.toString()
+            quantity = v
+        }
 
     }
 
 
-    fun setOnClickaddProduct(listener: (Subcategory) -> Unit){
-        onSubcategoryClickListener = listener
-    }
-    lateinit var  onSubcategoryClickListener: (Subcategory) -> Unit
-
+    lateinit var  onPlusClickListener: (Product, Int) -> Unit
+    lateinit var  onMinusClickListener: (Product) -> Unit
 
 
     val cache = object : ImageLoader.ImageCache {

@@ -48,10 +48,6 @@ class SubcategoryFragment : Fragment() {
 
        getCatData()
         binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack() }
-
-        // binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack("CategoryFragment", FragmentManager.POP_BACK_STACK_INCLUSIVE) }
-//
-//
         return binding.root
     }
 
@@ -60,7 +56,6 @@ class SubcategoryFragment : Fragment() {
     private fun getCatData() {
 
         val subcategoryUrl = "https://grocery-second-app.herokuapp.com/api/subcategory/${catID}"
-        Log.d("Sub Cat url", "$subcategoryUrl")
         val arrrequest = JsonObjectRequest(
             Request.Method.GET, subcategoryUrl, null,
 
@@ -80,7 +75,6 @@ class SubcategoryFragment : Fragment() {
                             val subname = catObj.getString("subName");
                             val subImg = catObj.getString("subImage");
                             val subimgUrl = "https://rjtmobile.com/grocery/images/$subImg"
-                            Log.d("subCatImage Url", " $subimgUrl")
                             val subcatID = catObj.getInt("subId")
                             val subcategory = Subcategory(subcatID, subname, subimgUrl)
                             subcategories.add(subcategory)
@@ -98,12 +92,10 @@ class SubcategoryFragment : Fragment() {
 
                         }
 
-
                     }catch (e: JSONException){
                         e.printStackTrace()
                         Toast.makeText(context, "failed to retrieve subcategory object", Toast.LENGTH_LONG).show()
                     }
-
                 }
             }, Response.ErrorListener { error ->
                 error.printStackTrace()

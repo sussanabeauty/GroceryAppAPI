@@ -13,8 +13,6 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemD
         try {
 
             mydb?.execSQL(CREATE_TABLE_CART_QUERY)
-           // mydb?.execSQL(CREATE_TABLE_ORDER_QUERY)
-
         }catch(se: SQLiteException){
             se.printStackTrace();
             Toast.makeText(context, "Error while creating table : \n$se", Toast.LENGTH_LONG).show()
@@ -29,24 +27,10 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemD
         const val CREATE_TABLE_CART_QUERY = """
             CREATE TABLE cart (
             productID INTEGER PRIMARY KEY AUTOINCREMENT,
-            product_name TEXT, 
+            product_name TEXT,
             quantity INTEGER,
             product_image TEXT,
             product_price DOUBLE)
         """
-
-//        const val CREATE_TABLE_ORDER_QUERY = """
-//            CREATE TABLE `order` (
-//            orderID INTEGER PRIMARY KEY AUTOINCREMENT,
-//            product_name TEXT,
-//            product_price DOUBLE,
-//            product_image TEXT,
-//            order_total DOUBLE,
-//            productID INTEGER,
-//
-//            FOREIGN KEY (productID)
-//            REFERENCES Cart (productID)
-//            ON UPDATE RESTRICT
-//            ON DELETE RESTRICT)"""
     }
 }

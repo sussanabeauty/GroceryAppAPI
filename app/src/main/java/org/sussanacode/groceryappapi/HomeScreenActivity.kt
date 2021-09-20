@@ -29,8 +29,6 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
     lateinit var navtoggle: ActionBarDrawerToggle
-
-
     val fragments = ArrayList<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,11 +37,11 @@ class HomeScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         //add fragments
         categoryFragment = CategoryFragment()
         subcatFragment = SubcategoryFragment()
         productFragment = ProductFragment()
+        cartFragment = CartViewFragment()
 
 
         //send category id to subcategory fragment
@@ -53,32 +51,29 @@ class HomeScreenActivity : AppCompatActivity() {
 
         }
 
-        //send subcategoryID to product fragment
-        subcatFragment.setOnClickSubcategory {
-            productFragment.getSubcategoryID(it)
-            loadProductFragment(it)
-        }
+//        //send subcategoryID to product fragment
+//        subcatFragment.setOnClickSubcategory {
+//            productFragment.getSubcategoryID(it)
+//            loadProductFragment(it)
+//        }
 
         //send subcategoryID to product fragment
         subcatFragment.setOnClickSubcategory {
             productFragment.getSubcategoryID(it)
             loadProductFragment(it)
-
         }
 
 
         //send productname to cart fragment
         productFragment.setOnClickAddProduct{
             cartFragment.getproductByName(it)
-            loadCartView(it)
-
+           loadCartView(it)
         }
 
 
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, categoryFragment)
-            .addToBackStack("CategoriesFragment ").commit()
-
+            .addToBackStack("CategoriesFragment").commit()
 
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -90,7 +85,6 @@ class HomeScreenActivity : AppCompatActivity() {
         binding.drawerLayout.addDrawerListener(navtoggle)
         navtoggle.syncState()
 
-        //currentFragment = ProfileFragment()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.navMenu.setNavigationItemSelectedListener {
@@ -117,12 +111,10 @@ class HomeScreenActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_container, currentFragment).commit()
                 }
 
-                //refactor code
                 R.id.action_sing_out->{
                     currentFragment = SignOutFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_container, currentFragment).commit()
                 }
-
             }
 
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -136,8 +128,8 @@ class HomeScreenActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, cartFragment)
             .addToBackStack("ProductFragment").commit()
-
     }
+
 
 
     private fun loadProductFragment(subcategory: Subcategory) {
@@ -155,28 +147,33 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     /** Navigation implementation */
-    //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
         if(navtoggle.onOptionsItemSelected(item)){
             return true
         }
 
-//        when(item.itemId){
-//            R.id.action_cart -> {
-//                currentFragment = OrdersFragment()
-//                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, currentFragment).commit()
-//            }
-//        }
+        if(item.itemId == R.id.action_cart){
+
+//        supportFragmentManager.beginTransaction()
+//            .add(R.id.fragment_container, cartFragment)
+//            .addToBackStack("ProductFragment")
+//            .commit()
+        return true
+
+        }
 
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        val itemdata = menu.findItem(R.id.action_cart)
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.add_to_cart, menu)
-       // return super.onCreateOptionsMenu(menu)
-        return true;
+        return super.onCreateOptionsMenu(menu)
+
     }
 
 

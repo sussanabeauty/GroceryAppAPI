@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:padding="@dimen/common_padding"
+    android:layout_margin="@dimen/small_margin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
@@ -28,6 +29,9 @@
 
             <TextView
                 android:id="@+id/tvProdname"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,21 +40,25 @@
 
             <TextView
                 android:id="@+id/tvprice"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 app:layout_constraintTop_toBottomOf="@id/tvProdname"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/btnincrementItem"
+                app:layout_constraintBottom_toTopOf="@id/btnincreaseItem"
                 />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnincrementItem"
+                android:id="@+id/btnincreaseItem"
                 android:text="+"
                 android:textSize="25dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
                 android:background="#cccccc"
+                android:layout_marginLeft="@dimen/common_margin"
                 android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,24 +68,25 @@
 
             <TextView
                 android:id="@+id/qtyvalue"
-                android:layout_width="100dp"
-                android:text="One one one "
+                android:layout_width="68dp"
+                android:text="One"
                 android:textColor="#006666"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="56dp"
                 app:layout_constraintTop_toBottomOf="@id/tvprice"
-                app:layout_constraintEnd_toStartOf="@id/btndecrementItem"
+                app:layout_constraintEnd_toStartOf="@id/btndecreaseItem"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btndecrementItem"
+                android:id="@+id/btndecreaseItem"
                 android:text="-"
                 android:textSize="25dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
                 android:background="#cccccc"
+                android:layout_marginRight="@dimen/common_margin"
                 android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 app:layout_constraintEnd_toEndOf="parent"

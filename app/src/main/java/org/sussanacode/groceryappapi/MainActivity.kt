@@ -24,13 +24,23 @@ class MainActivity : AppCompatActivity() {
     private fun getwaitingTime() {
         val screentimeout = 3000L
         val sharedPref = getSharedPreferences("user_checked", MODE_PRIVATE)
+        val username = sharedPref.getString("User_Key", "").toString();
+        val password = sharedPref.getString("Pass_Key", "").toString();
 
-        if(sharedPref.contains("User_Key") && sharedPref.contains("Pass_Key")){
-            handler.sendEmptyMessageDelayed(LAUNCH_HOME_SCREEN, screentimeout)
+
+        if((username != null) && (password != null)){
+            handler.sendEmptyMessageDelayed(LAUNCH_HOME_SCREEN, 2000)
         }else {
-
-            handler.sendEmptyMessageDelayed(LAUNCH_LOGIN_SCREEN, screentimeout)
+            handler.sendEmptyMessageDelayed(LAUNCH_LOGIN_SCREEN, 2000)
         }
+//        if(sharedPref.contains("User_Key") && sharedPref.contains("Pass_Key")){
+//            Log.d("username", "$username")
+//            Log.d("password", "$password")
+//            handler.sendEmptyMessageDelayed(LAUNCH_HOME_SCREEN, screentimeout)
+//        }else {
+//
+//            handler.sendEmptyMessageDelayed(LAUNCH_LOGIN_SCREEN, screentimeout)
+//        }
     }
 
      val handler = object : Handler(){

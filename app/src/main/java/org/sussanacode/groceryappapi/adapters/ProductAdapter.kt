@@ -21,26 +21,37 @@ class ProductAdapter (val productList: ArrayList<Product>, val imageLoader: Imag
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-        holder.bind(productList[position], imageLoader)
+        productList?.let {
 
-        if(this::productClickListener.isInitialized) {
-            holder.itemView.setOnClickListener {
-                productClickListener(productList[position], position)
+            holder.bind(productList[position], imageLoader)
+
+//            if(this::productClickListener.isInitialized) {
+//                holder.itemView.setOnClickListener {
+//                    productClickListener(productList[position], position)
+//                }
+//            }
+
+            if(this::addProducttoCartListener.isInitialized){
+                holder.binding.addProducttocart.setOnClickListener { btnAddProduct ->
+                    addProducttoCartListener(it[position], position)
+                }
             }
         }
     }
 
     override fun getItemCount() = productList.size
 
-    lateinit var productClickListener: (Product, Int) -> Unit
 
-    fun setOnProductClickListener(listener: (Product, Int) -> Unit) {
-        productClickListener = listener
-    }
+   // lateinit var productClickListener: (Product, Int) -> Unit
+
+//    fun setOnProductClickListener(listener: (Product, Int) -> Unit) {
+//        productClickListener = listener
+//    }
 
     lateinit var addProducttoCartListener: (Product, Int) -> Unit
 
     fun setOnAddProductListener(listener: (Product, Int) -> Unit) {
         addProducttoCartListener = listener
     }
+
 }

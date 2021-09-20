@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background=" #8c8c8c"
+    android:background="#e6e6e6"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,6 +20,18 @@
         app:layout_constraintBottom_toTopOf="@id/rvcartitem"
         />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnback"
+        android:src="@drawable/ic_arrow_back_"
+        android:textColor="#8c8c8c"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:layout_marginTop="46dp"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvsubtotal"
@@ -36,24 +48,12 @@
         app:layout_constraintBottom_toTopOf="@id/btncheckout"
         />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnback"
-        android:src="@drawable/ic_arrow_back_"
-        android:textColor="#8c8c8c"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        android:layout_marginTop="46dp"
-        android:layout_marginStart="@dimen/small_margin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/header"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvcartitem"
         android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginBottom="180dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
