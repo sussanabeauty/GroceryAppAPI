@@ -97,8 +97,6 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
 
-
-
         //add fragments
         categoryFragment = CategoryFragment()
         subcatFragment = SubcategoryFragment()
