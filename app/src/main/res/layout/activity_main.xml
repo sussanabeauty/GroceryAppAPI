@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_img"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <TextView
         android:text="Example Splash_Screen"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_margin="@dimen/splah_margin"
+        android:layout_margin="@dimen/splash_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

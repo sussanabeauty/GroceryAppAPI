@@ -11,20 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryAppAPI.NoActionBar">
-
-<!--        android:theme="@style/Theme.GroceryAppAPI">-->
-
         <activity
-            android:name=".HomeScreenActivity"
+            android:name=".activity.BillingDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activity.CheckoutActivity"
+            android:exported="true" /> <!-- android:theme="@style/Theme.GroceryAppAPI"> -->
+        <activity
+            android:name=".activity.HomeScreenActivity"
             android:exported="true" />
         <activity
-            android:name=".LogInActivity"
+            android:name=".activity.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.LogInActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

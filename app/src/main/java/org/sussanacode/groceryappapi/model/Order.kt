@@ -34,16 +34,16 @@ data class Payment(
     val paymentStatus: String
 )
 
-data class ShippingAddress(
-    val _id: String,
-    val city: String,
-    val houseNo: String,
-    val mobile: String,
-    val name: String,
-    val pincode: Int,
-    val streetName: String,
-    val type: String
-)
+//data class ShippingAddress(
+//    val _id: String,
+//    val city: String,
+//    val houseNo: String,
+//    val mobile: String,
+//    val name: String,
+//    val pincode: Int,
+//    val streetName: String,
+//    val type: String
+//)
 
 data class User(
     val _id: String,

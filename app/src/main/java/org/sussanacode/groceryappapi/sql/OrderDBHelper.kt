@@ -6,14 +6,14 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemDB", null, 1){
+class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemDB", null, 2){
 
     override fun onCreate(mydb: SQLiteDatabase?) {
 
         try {
 
             mydb?.execSQL(CREATE_TABLE_CART_QUERY)
-           // mydb?.execSQL(CREATE_TABLE_ORDER_QUERY)
+           // mydb?.execSQL(CREATE_TABLE_ADDRESS_QUERY)
 
         }catch(se: SQLiteException){
             se.printStackTrace();
@@ -22,7 +22,17 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemD
 
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {}
+    override fun onUpgrade(mydb: SQLiteDatabase?, newVersion: Int, oldVersion: Int) {
+
+        if(oldVersion == 1 && newVersion == 2){
+            try {
+                mydb?.execSQL(CREATE_TABLE_ADDRESS_QUERY)
+            }catch (se: SQLiteException){
+                se.printStackTrace()
+            }
+
+        }
+    }
 
 
     companion object {
@@ -35,6 +45,22 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemD
             product_price DOUBLE)
         """
 
+
+        const val CREATE_TABLE_ADDRESS_QUERY = """
+            CREATE TABLE shippingaddress (
+            addressId INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_name TEXT, 
+            user_phoneno INTEGER,
+            email TEXT,
+            address TEXT,
+            city TEXT,
+            state TEXT,
+            zip TEXT)
+            """
+
+
+
+//        userId INTEGER PRIMARY KEY AUTOINCREMENT,
 //        const val CREATE_TABLE_ORDER_QUERY = """
 //            CREATE TABLE `order` (
 //            orderID INTEGER PRIMARY KEY AUTOINCREMENT,

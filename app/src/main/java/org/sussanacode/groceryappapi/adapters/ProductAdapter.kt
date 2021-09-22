@@ -23,12 +23,14 @@ class ProductAdapter (val productList: ArrayList<Product>, val imageLoader: Imag
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         holder.bind(productList[position], imageLoader)
 
-        if(this::productClickListener.isInitialized) {
-            holder.itemView.setOnClickListener {
-                productClickListener(productList[position], position)
+        productList?.let {
+                    if(this::addProducttoCartListener.isInitialized){
+                        holder.binding.addProducttocart.setOnClickListener { btnAddProduct ->
+                            addProducttoCartListener(it[position], position)
+                        }
+                    }
+                }
             }
-        }
-    }
 
     override fun getItemCount() = productList.size
 

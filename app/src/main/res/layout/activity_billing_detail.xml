@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#cccccc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BillingDetailActivity">
+
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnback"
+        android:src="@drawable/ic_arrow_back_"
+        android:textColor="#8c8c8c"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:layout_marginTop="46dp"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/header"
+        android:text="User Address"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/common_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/etusername"
+        android:hint="@string/first_name"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view" />
+
+    <EditText
+        android:id="@+id/etmobile"
+        android:hint="@string/mobile"
+        android:inputType="phone"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view" />
+
+    <EditText
+        android:id="@+id/etemail"
+        android:hint="@string/user_name"
+        android:inputType="textEmailAddress"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etdeliveryaddress"
+            android:hint="@string/delivery_address"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        <EditText
+            android:id="@+id/etdeliverycity"
+            android:hint="@string/delivery_city"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_view"
+            app:layout_constraintStart_toEndOf="@id/etdeliveryaddress"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etdeliverystate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/etdeliverystate"
+            android:hint="@string/delivery_state"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_view"
+            app:layout_constraintStart_toEndOf="@id/etdeliverycity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etdeliveryzip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/etdeliveryzip"
+            android:hint="@string/delivery_zip"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_view"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCofirmdetails"
+        android:text="Confirm"
+        android:textStyle="bold"
+        android:textColor="#cccccc"
+        android:background="@color/text_color"
+        android:layout_marginTop="@dimen/large_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

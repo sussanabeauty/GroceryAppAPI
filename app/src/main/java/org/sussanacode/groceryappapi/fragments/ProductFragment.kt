@@ -48,24 +48,11 @@ class ProductFragment : Fragment() {
 
         binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack() }
 
-
-
-        //getaddproductbutlistener
-       setUpAddProductListener()
-
         return binding.root
 
     }
 
-    private fun setUpAddProductListener() {
-        productAdapter.setOnProductClickListener { product, position ->
-
-        }
-    }
-
-    fun getSubcategoryID(subcategory: Subcategory){
-
-        subcatID = subcategory.subId }
+    fun getSubcategoryID(subcategory: Subcategory){ subcatID = subcategory.subId }
 
 
 
@@ -73,14 +60,13 @@ class ProductFragment : Fragment() {
 
 
         val productUrl = "https://grocery-second-app.herokuapp.com/api/products/sub/${subcatID}"
-        Log.d("Sub Cat url", "$productUrl")
         val arrrequest = JsonObjectRequest(
             Request.Method.GET, productUrl, null,
 
             Response.Listener<JSONObject>{ response ->
 
                 if(response.getBoolean("error")){
-                    Toast.makeText(context, " product data was no retrieve $response", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, " product data was not retrieved $response", Toast.LENGTH_LONG).show()
                 }else {
                     try{
                         val productdetails = response.getJSONArray("data")
@@ -92,7 +78,6 @@ class ProductFragment : Fragment() {
                             val productprice = productObj.getDouble("price")
                             val productImg = productObj. getString("image");
                             val productimgUrl = "https://rjtmobile.com/grocery/images/$productImg"
-                            Log.d("product Image Url", " $productimgUrl")
                             val subcatID = productObj.getInt("subId")
 
                             val product = Product(subcatID, productname, productimgUrl, productprice)
@@ -108,7 +93,6 @@ class ProductFragment : Fragment() {
                                 onProductClickListener(product)
                             }
                         }
-
 
                     }catch (e: JSONException){
                         e.printStackTrace()

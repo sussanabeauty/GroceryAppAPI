@@ -1,5 +1,6 @@
 package org.sussanacode.groceryappapi.fragments
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -18,7 +19,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
+import org.sussanacode.groceryappapi.activity.CheckoutActivity
 import org.sussanacode.groceryappapi.adapters.CartViewAdapter
+import org.sussanacode.groceryappapi.adapters.ProductAdapter
 import org.sussanacode.groceryappapi.databinding.FragmentCartViewBinding
 import org.sussanacode.groceryappapi.model.Cart
 import org.sussanacode.groceryappapi.model.Product
@@ -32,10 +35,13 @@ class CartViewFragment: Fragment() {
     lateinit var requestQueue: RequestQueue
     lateinit var imageLoader: ImageLoader
     lateinit var cartAdapter: CartViewAdapter
-//    lateinit var cartDao: CartDAO
 
-    lateinit var cart: Cart
 
+
+    var subtotal: Double = 0.0
+    var itemcount = 0
+    var productquantity = 0;
+    val productprice = 0.0
     val cartList: ArrayList<Cart> = ArrayList()
     var productname: String? = null;
 
@@ -51,22 +57,31 @@ class CartViewFragment: Fragment() {
         requestQueue = Volley.newRequestQueue(context)
         imageLoader = ImageLoader(requestQueue, cache)
 
+        cartAdapter = CartViewAdapter(cartList, imageLoader)
 
 
         binding.rvcartitem.layoutManager = LinearLayoutManager(context)
 
         //addProducts()
         getProductDetails()
-       // getcartdetails()
+
+        //read date from the database
+        binding.btncheckout.setOnClickListener {
+            itemcount
+            val checkoutIntent = Intent(context, CheckoutActivity::class.java)
+            checkoutIntent.putExtra("itemcount", itemcount)
+            checkoutIntent.putExtra("subtotal", subtotal)
+
+            startActivity(checkoutIntent)
+        }
 
         binding.btnback.setOnClickListener { activity?.supportFragmentManager?.popBackStack() }
-
 
         return binding.root
     }
 
-    //getproductbyname
 
+    //getproductbyname
     fun getproductByName(product: Product){
         productname = product.productName
     }
@@ -74,11 +89,8 @@ class CartViewFragment: Fragment() {
 
     private fun getProductDetails() {
 
-//        https://grocery-second-app.herokuapp.com/api/products/search/Chicken%20Hariyali%20150%20grams
         if(productname != null){
             val productUrl = "https://grocery-second-app.herokuapp.com/api/products/search/${productname}"
-            Log.d("Sub Cat url", "$productUrl")
-
 
             //read data
             val arrrequest = JsonObjectRequest(
@@ -99,28 +111,37 @@ class CartViewFragment: Fragment() {
                                 val productprice = productObj.getDouble("price")
                                 val productImg = productObj. getString("image");
                                 val productimgUrl = "https://rjtmobile.com/grocery/images/$productImg"
-                                Log.d("product Image Url", " $productimgUrl")
 
-                                val quantity = cart.quantity + 1
+
+                                val c: Cart? = null
+                                val quantity = c?.quantity ?: + 1
                                 val cart = Cart(0, productname, quantity, productimgUrl, productprice)
                                 cartList.add(cart)
 
                                 //save to database
                                 val saveProducttoCartDB = CartDAO(requireContext()).addToCart(cart)
-                                Log.d("CartDB", "${saveProducttoCartDB.toString()}")
-                            }
 
-                            cartAdapter = CartViewAdapter(cartList, imageLoader)
-                            binding.rvcartitem .adapter = cartAdapter
+                                for (i in cartList){
+                                    subtotal += (i.productprice * i.quantity)
+                                    itemcount = itemcount + 1
+
+//                                    binding.btncheckout.text = "Proceed with Checkout (${itemcount})"
+//                                    binding.tvsubtotal.text = "Subtotal: $${subtotal}"
+                                }
+
+                               // subtotal = productquantity
+
+                                binding.btncheckout.text = "Proceed with Checkout (${itemcount})"
+                                binding.tvsubtotal.text = "Subtotal: $${subtotal}"
+//                                cartAdapter = CartViewAdapter(cartList, imageLoader)
+                                binding.rvcartitem.adapter = cartAdapter
 
 
-//                            //addproduct to cart
-//                            productAdapter.setOnAddProductListener { product, position ->
-//                                if(this::onProductClickListener.isInitialized){
-//                                    onProductClickListener(product)
+//                                cartAdapter.setOnIncrementProductListener { cart, position ->
+//                                    cart.quantity += productquantity
+//                                    cart.productprice *=  cart.productprice
 //                                }
-//                            }
-
+                            }
 
                         }catch (e: JSONException){
                             e.printStackTrace()
@@ -135,18 +156,25 @@ class CartViewFragment: Fragment() {
             )
             requestQueue.add(arrrequest)
 
-
-
         }else{
             return
         }
 
+        setUpAddProductListener()
+        setUpMinusProductLitener()
+
     }
 
-    private fun addProducts() {
+    private fun setUpMinusProductLitener() {
 
+    }
 
+    private fun setUpAddProductListener() {
 
+//        cartAdapter.setOnIncrementProductListener { cart, position ->
+//           cart.quantity += productquantity
+//            cart.productprice *=  cart.productprice
+//        }
     }
 
 
@@ -155,6 +183,10 @@ class CartViewFragment: Fragment() {
     }
     lateinit var  onSubcategoryClickListener: (Subcategory) -> Unit
 
+
+
+    lateinit var onClickProductAddListener: (Cart) -> Unit
+    lateinit var onClickProductMinusListener: (Product) -> Unit
 
 
     val cache = object : ImageLoader.ImageCache {

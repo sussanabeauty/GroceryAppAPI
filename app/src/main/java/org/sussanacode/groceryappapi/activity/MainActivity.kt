@@ -1,11 +1,10 @@
-package org.sussanacode.groceryappapi
+package org.sussanacode.groceryappapi.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import org.sussanacode.groceryappapi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         if(sharedPref.contains("User_Key") && sharedPref.contains("Pass_Key")){
             handler.sendEmptyMessageDelayed(LAUNCH_HOME_SCREEN, screentimeout)
         }else {
-
             handler.sendEmptyMessageDelayed(LAUNCH_LOGIN_SCREEN, screentimeout)
         }
     }

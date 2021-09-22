@@ -23,7 +23,7 @@ class CartDAO(val context: Context) {
 
             cartvalues.put("product_name", cart.productname)
             cartvalues.put("quantity", cart.quantity)
-            cartvalues.put("productImage", cart.productImage)
+            cartvalues.put("product_image", cart.productImage)
             cartvalues.put("product_price", cart.productprice)
 
             val productID: Long = mydb.insert("cart", null, cartvalues)

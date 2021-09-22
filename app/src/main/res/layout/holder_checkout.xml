@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="@dimen/common_margin"
+    android:padding="@dimen/common_padding"
+    android:background="#cccccc"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/common_margin"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvitems"
+                android:text="Items(0): "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvshipping"
+                android:text="Shipping n handling: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvsavings"
+                android:text="Your coupon Savings: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/tvtotalbe4tax"
+                android:text="Total before tax:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvestimatedtax"
+                android:text="Estimated Tax: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvorderrtotal"
+                android:text="Order total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Shipping Address"
+            android:layout_marginTop="@dimen/common_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvuseraddress"
+                android:text="Shipping Address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:text="Payment Information"
+            android:layout_marginTop="@dimen/common_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvpayment"
+                android:text="Shipping Address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

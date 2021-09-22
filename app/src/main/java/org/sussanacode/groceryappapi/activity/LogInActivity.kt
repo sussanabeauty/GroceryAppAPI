@@ -1,10 +1,9 @@
-package org.sussanacode.groceryappapi
+package org.sussanacode.groceryappapi.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.android.volley.DefaultRetryPolicy
@@ -21,6 +20,7 @@ class LogInActivity : AppCompatActivity() {
     lateinit var binding: ActivityLogInBinding
     var loginList: ArrayList<LogInUser>? = null
     lateinit var requestQueue: RequestQueue
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +39,7 @@ class LogInActivity : AppCompatActivity() {
             startActivity(Intent(baseContext, MainActivity::class.java))
         }
 
-        binding.btnsignin.setOnClickListener {
-            getUserData()
-
-//            startActivity(Intent(baseContext, HomeScreenActivity::class.java))
-//            finish()
-        }
+        binding.btnsignin.setOnClickListener { getUserData() }
 
 
         binding.btnregisternew.setOnClickListener {  startActivity(Intent(baseContext, RegisterActivity::class.java)) }
