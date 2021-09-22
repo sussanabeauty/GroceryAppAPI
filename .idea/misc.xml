@@ -12,24 +12,30 @@
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/drawable/ic_search.xml" value="0.1" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/drawable/register_button_background.xml" value="0.225" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/drawable/signin_button_background.xml" value="0.225" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_add_product_to_cart.xml" value="0.11979166666666667" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_billing_detail.xml" value="0.2" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_checkout.xml" value="0.2" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_home_screen.xml" value="0.1" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_log_in.xml" value="0.25" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_menu_screen.xml" value="0.20833333333333334" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_navigation.xml" value="0.33" />
-        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_register.xml" value="0.12" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/activity_sub_category_view.xml" value="0.25416666666666665" />
-        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_cart_view.xml" value="0.16" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_cart_view.xml" value="0.1" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_category.xml" value="0.1" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_help_faq.xml" value="0.25416666666666665" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_orders.xml" value="0.12158054711246201" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_ordertracking.xml" value="0.25416666666666665" />
-        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_product.xml" value="0.17864583333333334" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_product.xml" value="0.1" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_product_to_cart.xml" value="0.15520833333333334" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_profile.xml" value="0.12158054711246201" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_signout.xml" value="0.12158054711246201" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/fragment_subcategory.xml" value="0.1" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/holder_cart.xml" value="0.25416666666666665" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/holder_category.xml" value="0.1" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/holder_checkout.xml" value="0.15896739130434784" />
+        <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/holder_holder.xml" value="0.1546875" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/holder_product.xml" value="0.1" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/holder_subcategory.xml" value="0.12158054711246201" />
         <entry key="..\:/Apolis_Android/Android_Class/GroceryAppAPI/app/src/main/res/layout/nav_header.xml" value="0.14356884057971014" />
