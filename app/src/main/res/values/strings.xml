@@ -21,5 +21,12 @@
     <string name="billing_city">Billing City</string>
     <string name="delivery_state">State</string>
     <string name="userId">User ID</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="card_num">Card Number</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="card_code">CVV Code</string>
+    <string name="orderID">Order Id</string>
+    <string name="order_date">Order Date</string>
+    <string name="payment_summary">Payment Summary</string>
 
 </resources>

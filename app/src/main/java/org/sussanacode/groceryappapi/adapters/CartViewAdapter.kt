@@ -9,7 +9,7 @@ import org.sussanacode.groceryappapi.holder.CartViewHolder
 import org.sussanacode.groceryappapi.model.Cart
 import org.sussanacode.groceryappapi.model.Product
 
-class CartViewAdapter (val cartItems: ArrayList<Cart>, val imageLoader: ImageLoader) :
+class CartViewAdapter (val cartItems: ArrayList<Cart>?, val imageLoader: ImageLoader) :
     RecyclerView.Adapter<CartViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -25,30 +25,30 @@ class CartViewAdapter (val cartItems: ArrayList<Cart>, val imageLoader: ImageLoa
 
 
             if (this::productAddOnCartListener.isInitialized) {
-                holder.itemView.setOnClickListener { btnIncreaseproduct ->
-                    productAddOnCartListener(it[position], position)
+                holder.binding.btnincrementItem.setOnClickListener { btnIncreaseproduct ->
+                    productAddOnCartListener(it[position])
                 }
             }
 
             if (this::productMinusOnCartListener.isInitialized) {
-                holder.itemView.setOnClickListener { btnIncreaseproduct ->
-                    productMinusOnCartListener(it[position], position)
+                holder.binding.btndecrementItem.setOnClickListener { btnIncreaseproduct ->
+                    productMinusOnCartListener(it[position])
                 }
             }
         }
     }
 
-    override fun getItemCount() = cartItems.size
+    override fun getItemCount() = cartItems?.size?: 0
 
-    lateinit var productAddOnCartListener: (Cart, Int) -> Unit
-    lateinit var productMinusOnCartListener: (Cart, Int) -> Unit
+    lateinit var productAddOnCartListener: (Cart) -> Unit
+    lateinit var productMinusOnCartListener: (Cart) -> Unit
 
 
-    fun setOnIncrementProductListener(listener: (Cart, Int) -> Unit){
+    fun setOnIncrementProductListener(listener: (Cart) -> Unit){
         productAddOnCartListener = listener
     }
 
-    fun setOndecrementProductListener(listener: (Cart, Int) -> Unit){
+    fun setOndecrementProductListener(listener: (Cart) -> Unit){
         productMinusOnCartListener = listener
     }
 }

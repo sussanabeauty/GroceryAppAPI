@@ -97,6 +97,9 @@ class HomeScreenActivity : AppCompatActivity() {
 
         binding.navMenu.setNavigationItemSelectedListener {
             when (it.itemId){
+                R.id.action_home_screeen ->{
+                   startActivity(Intent(baseContext, HomeScreenActivity::class.java))
+                }
 
                 R.id.action_user_profile ->{
                     currentFragment = ProfileFragment()
@@ -130,7 +133,11 @@ class HomeScreenActivity : AppCompatActivity() {
                 }
 
                 R.id.action_address ->{
-                    startActivity(Intent(baseContext, BillingDetailActivity::class.java))
+                    startActivity(Intent(baseContext, AddressViewActivity::class.java))
+                }
+
+                R.id.action_payment ->{
+                    startActivity(Intent(baseContext, AddPaymentActivity::class.java))
                 }
 
             }
@@ -171,14 +178,19 @@ class HomeScreenActivity : AppCompatActivity() {
             return true
         }
 
-//        when(item.itemId){
-//
-//        }
-        if(item.itemId == R.id.action_cart){
-            supportFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, cartFragment)
-                .addToBackStack("ProductFragment").commit()
+        when(item.itemId){
+            R.id.action_cart -> {
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fragment_container, cartFragment).commit()}
+                    //.addToBackStack("ProductFragment").commit()}
+
+
         }
+//        if(item.itemId == R.id.action_cart){
+//            supportFragmentManager.beginTransaction()
+//                .add(R.id.fragment_container, cartFragment)
+//                .addToBackStack("ProductFragment").commit()
+//        }
 
         return super.onOptionsItemSelected(item)
     }

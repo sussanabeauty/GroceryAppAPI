@@ -28,11 +28,11 @@ data class OrderSummary(
     val totalAmount: Int
 )
 
-data class Payment(
-    val _id: String,
-    val paymentMode: String,
-    val paymentStatus: String
-)
+//data class Payment(
+//    val _id: String,
+//    val paymentMode: String,
+//    val paymentStatus: String
+//)
 
 //data class ShippingAddress(
 //    val _id: String,

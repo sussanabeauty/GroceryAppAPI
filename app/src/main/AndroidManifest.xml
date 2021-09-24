@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryAppAPI.NoActionBar">
         <activity
+            android:name=".activity.OrderSummeryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AddPaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.UpdateAddressActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AddressViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.BillingDetailActivity"
             android:exported="true" />
         <activity

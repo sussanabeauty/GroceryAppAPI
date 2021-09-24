@@ -3,7 +3,6 @@ package org.sussanacode.groceryappapi.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.util.LruCache
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -21,7 +19,6 @@ import org.json.JSONException
 import org.json.JSONObject
 import org.sussanacode.groceryappapi.activity.CheckoutActivity
 import org.sussanacode.groceryappapi.adapters.CartViewAdapter
-import org.sussanacode.groceryappapi.adapters.ProductAdapter
 import org.sussanacode.groceryappapi.databinding.FragmentCartViewBinding
 import org.sussanacode.groceryappapi.model.Cart
 import org.sussanacode.groceryappapi.model.Product
@@ -35,14 +32,13 @@ class CartViewFragment: Fragment() {
     lateinit var requestQueue: RequestQueue
     lateinit var imageLoader: ImageLoader
     lateinit var cartAdapter: CartViewAdapter
-
-
+    lateinit var cartDao : CartDAO
 
     var subtotal: Double = 0.0
     var itemcount = 0
     var productquantity = 0;
     val productprice = 0.0
-    val cartList: ArrayList<Cart> = ArrayList()
+    var cartList: ArrayList<Cart>? = null
     var productname: String? = null;
 
 
@@ -56,8 +52,9 @@ class CartViewFragment: Fragment() {
 
         requestQueue = Volley.newRequestQueue(context)
         imageLoader = ImageLoader(requestQueue, cache)
+        cartDao =  CartDAO(requireActivity())
 
-        cartAdapter = CartViewAdapter(cartList, imageLoader)
+        // cartAdapter = CartViewAdapter(cartList, imageLoader)
 
 
         binding.rvcartitem.layoutManager = LinearLayoutManager(context)
@@ -94,9 +91,7 @@ class CartViewFragment: Fragment() {
 
             //read data
             val arrrequest = JsonObjectRequest(
-                Request.Method.GET, productUrl, null,
-
-                Response.Listener<JSONObject>{ response ->
+                Request.Method.GET, productUrl, null, { response ->
 
                     if(response.getBoolean("error")){
                         Toast.makeText(context, " product data was no retrieve $response", Toast.LENGTH_LONG).show()
@@ -113,34 +108,15 @@ class CartViewFragment: Fragment() {
                                 val productimgUrl = "https://rjtmobile.com/grocery/images/$productImg"
 
 
-                                val c: Cart? = null
-                                val quantity = c?.quantity ?: + 1
+                                val quantity = 1
                                 val cart = Cart(0, productname, quantity, productimgUrl, productprice)
-                                cartList.add(cart)
 
                                 //save to database
-                                val saveProducttoCartDB = CartDAO(requireContext()).addToCart(cart)
+                                val saveProducttoCartDB = cartDao.addToCart(cart)
 
-                                for (i in cartList){
-                                    subtotal += (i.productprice * i.quantity)
-                                    itemcount = itemcount + 1
-
-//                                    binding.btncheckout.text = "Proceed with Checkout (${itemcount})"
-//                                    binding.tvsubtotal.text = "Subtotal: $${subtotal}"
-                                }
-
-                               // subtotal = productquantity
-
-                                binding.btncheckout.text = "Proceed with Checkout (${itemcount})"
-                                binding.tvsubtotal.text = "Subtotal: $${subtotal}"
-//                                cartAdapter = CartViewAdapter(cartList, imageLoader)
-                                binding.rvcartitem.adapter = cartAdapter
-
-
-//                                cartAdapter.setOnIncrementProductListener { cart, position ->
-//                                    cart.quantity += productquantity
-//                                    cart.productprice *=  cart.productprice
-//                                }
+                                if(saveProducttoCartDB){
+                                    Toast.makeText(context, "Cart Items were saved successfully", Toast.LENGTH_LONG).show()
+                                }else Toast.makeText(context, "Failed to save cart items", Toast.LENGTH_LONG).show()
                             }
 
                         }catch (e: JSONException){
@@ -148,45 +124,75 @@ class CartViewFragment: Fragment() {
                             Toast.makeText(context, "failed to retrieve Product object", Toast.LENGTH_LONG).show()
                         }
                     }
-                }, Response.ErrorListener { error ->
+                }, { error ->
                     error.printStackTrace()
                     Toast.makeText(context, "Error $error", Toast.LENGTH_LONG).show()
-                }
-
-            )
+                })
             requestQueue.add(arrrequest)
 
         }else{
             return
         }
 
-        setUpAddProductListener()
-        setUpMinusProductLitener()
+
+        displaycartItem()
 
     }
 
-    private fun setUpMinusProductLitener() {
+    private fun displaycartItem() {
+
+       cartList = cartDao.getItemsInCart()
+
+        cartAdapter = CartViewAdapter(cartList, imageLoader)
+        binding.rvcartitem.adapter = cartAdapter
+
+        subtotal = 0.0
+        itemcount = 0
+
+        for (i in cartList!!){
+            var productSubtotal: Double  = i.productprice * i.quantity
+            subtotal += productSubtotal
+            itemcount += 1
+            binding.btncheckout.text = "Proceed with Checkout (${itemcount})"
+            binding.tvsubtotal.text = "Subtotal: $${subtotal}"
+
+        }
+
+//        setupAddListner()
+//        setUpMinusListener()
 
     }
 
-    private fun setUpAddProductListener() {
+//    private fun setUpMinusListener() {
+//
+////        cartAdapter.setOnIncrementProductListener { cart ->
+////            val numquanty = cart.quantity + 1
+////            val productsubtotal = cart.quantity * cart.productprice
+////
+////            cart.quantity = numquanty
+////            cart.productprice = productprice
+////
+////            Toast.makeText(context, "You click minus button", Toast.LENGTH_LONG).show()
+////
+//////            binding.qtyvalue.text = cart.quantity.toString()
+//////            binding.tvprice.text = "$${productsubtotal.toString()}"
+////        }
+//
+//    }
 
-//        cartAdapter.setOnIncrementProductListener { cart, position ->
-//           cart.quantity += productquantity
-//            cart.productprice *=  cart.productprice
+//    private fun setupAddListner() {
+//
+//        cartAdapter.setOnIncrementProductListener { cart ->
+//            cart.quantity += 1
+//            cart.productprice *=  cart.quantity
+//
+//
+//            Toast.makeText(context, "You click add button", Toast.LENGTH_LONG).show()
+//
+////            binding.qtyvalue.text = cart.quantity.toString()
+////            binding.tvprice.text = "$${productsubtotal.toString()}"
 //        }
-    }
 
-
-    fun setOnClickaddProduct(listener: (Subcategory) -> Unit){
-        onSubcategoryClickListener = listener
-    }
-    lateinit var  onSubcategoryClickListener: (Subcategory) -> Unit
-
-
-
-    lateinit var onClickProductAddListener: (Cart) -> Unit
-    lateinit var onClickProductMinusListener: (Product) -> Unit
 
 
     val cache = object : ImageLoader.ImageCache {

@@ -38,8 +38,6 @@ class BillingDetailActivity : AppCompatActivity() {
 
         setUpEvents()
 
-
-
     }
 
 
@@ -56,7 +54,7 @@ class BillingDetailActivity : AppCompatActivity() {
             val state = binding.etdeliverystate.text.toString()
             val zip = binding.etdeliveryzip.text.toString()
 
-            val deliveryAddress = ShippingAddress(0, username, email, mobile, address, city, state, zip)
+            val deliveryAddress = ShippingAddress(0, username, mobile, email, address, city, state, zip)
 
             val savedAddress = addressDao.addAddress(deliveryAddress)
 

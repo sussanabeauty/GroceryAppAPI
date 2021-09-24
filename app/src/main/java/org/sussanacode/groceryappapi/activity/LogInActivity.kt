@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.android.volley.DefaultRetryPolicy
@@ -74,11 +75,13 @@ class LogInActivity : AppCompatActivity() {
                 if(response.has("token")){
                     val username = response.getJSONObject("user").getString("email")
                     val pass = response.getJSONObject("user").getString("password")
-                    //Log.d("Token", "$username and $pass")
+                    val userID = response.getJSONObject("user").getString("_id")
+
                     val sharedPreferences = getSharedPreferences("user_checked", MODE_PRIVATE)
                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
                     editor.putString("User_Key", username)
                     editor.putString("Pass_Key", pass)
+                    editor.putString("USER_ID", userID)
                     editor.commit()
                     Toast.makeText(baseContext, "User successfully logged in ", Toast.LENGTH_LONG).show()
                     startActivity(Intent(baseContext, HomeScreenActivity::class.java))

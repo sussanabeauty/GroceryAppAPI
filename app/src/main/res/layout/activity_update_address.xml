@@ -6,7 +6,7 @@
     android:background="#cccccc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.BillingDetailActivity">
+    tools:context=".activity.UpdateAddressActivity">
 
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -117,8 +117,8 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCofirmdetails"
-        android:text="Confirm"
+        android:id="@+id/btnupdateAdd"
+        android:text="Update Address"
         android:textStyle="bold"
         android:textColor="#cccccc"
         android:background="@color/text_color"
@@ -126,7 +126,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
 
 </LinearLayout>

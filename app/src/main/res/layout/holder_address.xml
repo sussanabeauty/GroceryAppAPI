@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/common_padding"
+    android:layout_margin="@dimen/small_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvusername"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvphone" />
+
+            <TextView
+                android:id="@+id/tvphone"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvusername"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvaddress" />
+
+
+
+            <TextView
+                android:id="@+id/tvaddress"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvphone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvcitystate"/>
+
+
+
+            <TextView
+                android:id="@+id/tvcitystate"
+                android:text="aaaaaaaaaaaaaaaa"
+                android:textStyle="bold"
+                android:layout_marginLeft="45dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvaddress"
+                app:layout_constraintEnd_toStartOf="@id/tvzip"
+                app:layout_constraintBottom_toTopOf="@id/tvaddAddress"
+                />
+
+
+            <TextView
+                android:id="@+id/tvzip"
+                android:text="ffffffffffffffffffffffff"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginLeft="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvaddress"
+                app:layout_constraintStart_toEndOf="@id/tvcitystate"
+                app:layout_constraintBottom_toTopOf="@id/tvaddAddress" />
+
+
+            <TextView
+                android:id="@+id/tvaddAddress"
+                android:text="Add new Address"
+                android:textColor="#006666"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvcitystate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btnedit"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnedit"
+                android:text="Edit"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:background="#f2f2f2"
+                android:layout_marginLeft="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btndelete"
+                android:text="Delete"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginLeft="180dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:background="#f2f2f2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

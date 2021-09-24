@@ -37,7 +37,6 @@ class CartDAO(val context: Context) {
 
     fun getItemsInCart(): ArrayList<Cart>? {
         try {
-
             val cartList = ArrayList<Cart>()
             val cartCursor: Cursor = mydb.query("cart", null, null, null, null, null, null)
 
@@ -61,7 +60,7 @@ class CartDAO(val context: Context) {
 
 
     fun deleteItemInCart(productID: Long): Boolean{
-        val rowsDeleted = mydb.delete("cart", "cartID=$productID", null)
+        val rowsDeleted = mydb.delete("cart", "productID=$productID", null)
         return rowsDeleted == 1
     }
 

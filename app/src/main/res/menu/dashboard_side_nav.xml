@@ -8,6 +8,9 @@
 
         <item android:title="Options_Menu">
             <menu >
+                <item android:id="@+id/action_home_screeen"
+                    android:title="Home Screen" />
+
                 <item android:id="@+id/action_user_profile"
                     android:icon="@drawable/ic_person"
                     android:title="Profile" />
@@ -15,6 +18,10 @@
                 <item android:id="@+id/action_address"
                     android:icon="@drawable/ic_address"
                     android:title="Add Address" />
+
+                <item android:id="@+id/action_payment"
+                    android:icon="@drawable/ic_payments"
+                    android:title="Add Payment" />
 
 
                 <item android:id="@+id/action_orders"

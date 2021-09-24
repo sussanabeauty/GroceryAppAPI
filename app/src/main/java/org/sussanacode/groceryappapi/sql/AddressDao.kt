@@ -1,5 +1,6 @@
 package org.sussanacode.groceryappapi.sql
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -47,15 +48,18 @@ class AddressDao(val context: Context) {
             val addressCursor: Cursor = mydb.query("shippingaddress", null, null, null, null, null, null)
 
             while (addressCursor.moveToNext()){
-                val name = addressCursor.getString(0)
-                val userphone = addressCursor.getString(1)
-                val email = addressCursor.getString(2)
-                val address = addressCursor.getString(3)
-                val city = addressCursor.getString(4)
-                val state = addressCursor.getString(5)
-                val zip = addressCursor.getString(6)
 
-                val addrs = ShippingAddress(0, name, userphone, email, address, city, state, zip)
+                val addressID = addressCursor.getLong(0)
+                val name = addressCursor.getString(1)
+                val userphone = addressCursor.getString(2)
+                val email = addressCursor.getString(3)
+                val address = addressCursor.getString(4)
+                val city = addressCursor.getString(5)
+                val state = addressCursor.getString(6)
+                val zip = addressCursor.getString(7)
+
+
+                val addrs = ShippingAddress(addressID, name, userphone, email, address, city, state, zip)
                 addressList.add(addrs)
             }
             return addressList

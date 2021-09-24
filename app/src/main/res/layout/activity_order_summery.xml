@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#cccccc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddPaymentActivity">
+
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnback"
+        android:src="@drawable/ic_arrow_back_"
+        android:textColor="#8c8c8c"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:layout_marginTop="46dp"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/header"
+        android:text="Thank you for your order"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/common_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvorderId"
+        android:hint="@string/orderID"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view" />
+
+    <TextView
+        android:id="@+id/tvorderdate"
+        android:hint="@string/order_date"
+        android:inputType="datetime"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view" />
+
+    <TextView
+        android:id="@+id/tvdelivery_address"
+        android:hint="@string/delivery_address"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view" />
+
+
+    <TextView
+        android:id="@+id/tvpaymentsummary"
+        android:hint="@string/payment_summary"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btntrackorder"
+        android:text="Track Order"
+        android:textStyle="bold"
+        android:textColor="#cccccc"
+        android:background="@color/text_color"
+        android:layout_marginTop="@dimen/large_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

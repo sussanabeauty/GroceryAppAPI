@@ -6,32 +6,25 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemDB", null, 2){
+class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB", null, 2){
 
     override fun onCreate(mydb: SQLiteDatabase?) {
 
         try {
 
             mydb?.execSQL(CREATE_TABLE_CART_QUERY)
-           // mydb?.execSQL(CREATE_TABLE_ADDRESS_QUERY)
+            mydb?.execSQL(CREATE_TABLE_ADDRESS_QUERY)
+            mydb?.execSQL(CREATE_TABLE_PAYMENT_QUERY)
 
         }catch(se: SQLiteException){
             se.printStackTrace();
             Toast.makeText(context, "Error while creating table : \n$se", Toast.LENGTH_LONG).show()
         }
-
     }
 
     override fun onUpgrade(mydb: SQLiteDatabase?, newVersion: Int, oldVersion: Int) {
 
-        if(oldVersion == 1 && newVersion == 2){
-            try {
-                mydb?.execSQL(CREATE_TABLE_ADDRESS_QUERY)
-            }catch (se: SQLiteException){
-                se.printStackTrace()
-            }
 
-        }
     }
 
 
@@ -57,6 +50,14 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "CartItemD
             state TEXT,
             zip TEXT)
             """
+
+        const val CREATE_TABLE_PAYMENT_QUERY = """
+            CREATE TABLE payment (
+            cardId INTEGER PRIMARY KEY AUTOINCREMENT,
+            holder_name TEXT, 
+            card_number INTEGER,
+            expiration_date TEXT,
+            cvv_code TEXT)"""
 
 
 
