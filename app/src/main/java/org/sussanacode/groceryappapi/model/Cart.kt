@@ -7,9 +7,5 @@ data class Cart(
     var quantity: Int,
     val productImage: String,
     var productprice: Double,
-//    var itemnumber: Int,
-//    var subtotal : Double
-
-
 )
 

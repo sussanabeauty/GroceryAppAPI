@@ -48,14 +48,11 @@ class CheckoutActivity : AppCompatActivity() {
         paymentDao = PaymentDao(baseContext)
         requestQueue = Volley.newRequestQueue(baseContext)
 
-        //  cartFragment = CartViewFragment()
 
         binding.btnback.setOnClickListener {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, CartViewFragment()).commit()
-
-            //.add(R.id.fragment_container, CartViewFragment()).re.commit()
-//                .addToBackStack("ProductFragment").commit()
+                .add(R.id.fragment_container, CartViewFragment())
+                .addToBackStack("ProductFragment").commit()
         }
 
         setUpevents()
@@ -232,8 +229,6 @@ class CheckoutActivity : AppCompatActivity() {
             orderIntent.putExtras(extras)
             startActivity(orderIntent)
         }
-
-
 
     }
 }

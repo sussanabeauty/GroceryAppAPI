@@ -43,17 +43,4 @@ class CartViewHolder (val binding: HolderCartBinding) : RecyclerView.ViewHolder(
     }
 
 
-
-//    fun updateDetails(cartItems: ArrayList<Cart>, cart: Cart)
-//    {
-//        cart.subtotal = cart.productprice * cart.quantity
-//        binding.tvprice.text = "$${cart.subtotal.toString()}"
-//        binding.qtyvalue.text = cart.quantity.toString()
-//        val newTotal:Double = cartItems.sumOf { it.subtotal }
-//        val newQty:Int = cartItems.sumOf {it.quantity}
-//        println(newTotal)
-//        println(newQty)
-//
-//    }
-
 }

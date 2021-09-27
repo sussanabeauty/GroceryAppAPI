@@ -71,8 +71,6 @@ class CartDAO(val context: Context) {
                 cartvalues.put("quantity", cart.quantity)
                 cartvalues.put("product_image", cart.productImage)
                 cartvalues.put("product_price", cart.productprice)
-//            cartvalues.put("product_items", cart.itemnumber)
-//            cartvalues.put("product_subtotal", cart.subtotal)
 
                 val cartID: Long = mydb.insert("cart", null, cartvalues)
                 return cartID != -1L
@@ -98,8 +96,6 @@ class CartDAO(val context: Context) {
                 val productqty = cartCursor.getInt(3)
                 val productimg = cartCursor.getString(4)
                 val productprice = cartCursor.getDouble(5)
-//                val productitems = cartCursor.getInt(6)
-//                val productsubtotal = cartCursor.getDouble(7)
 
                 val cart = Cart(cartID, productID, productname, productqty, productimg, productprice)
                 cartList.add(cart)

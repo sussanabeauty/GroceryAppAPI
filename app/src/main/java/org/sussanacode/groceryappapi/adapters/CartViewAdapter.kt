@@ -9,8 +9,7 @@ import org.sussanacode.groceryappapi.databinding.HolderCartBinding
 import org.sussanacode.groceryappapi.holder.CartViewHolder
 import org.sussanacode.groceryappapi.model.Cart
 
-class CartViewAdapter (val cartItems: ArrayList<Cart>?, val imageLoader: ImageLoader) :
-    RecyclerView.Adapter<CartViewHolder>()
+class CartViewAdapter (val cartItems: ArrayList<Cart>?, val imageLoader: ImageLoader) : RecyclerView.Adapter<CartViewHolder>()
 {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -27,11 +26,6 @@ class CartViewAdapter (val cartItems: ArrayList<Cart>?, val imageLoader: ImageLo
 
             if (this::productAddOnCartListener.isInitialized) {
                 holder.binding.btnincrementItem.setOnClickListener { btnIncreaseproduct ->
-//
-//                    it[position].quantity += 1
-//                    val productsubtotal = it[position].quantity * it[position].productprice
-//                    holder.binding.qtyvalue.text = it[position].quantity.toString()
-//                    holder.binding.tvprice.text = "$${productsubtotal.toString()}"
 
                     productAddOnCartListener(it[position], position)
                 }
@@ -40,12 +34,8 @@ class CartViewAdapter (val cartItems: ArrayList<Cart>?, val imageLoader: ImageLo
             if (this::productMinusOnCartListener.isInitialized) {
                 holder.binding.btndecrementItem.setOnClickListener { btnIncreaseproduct ->
 
-                    it[position].quantity -= 1
-                    val productsubtotal = it[position].quantity * it[position].productprice
-                    holder.binding.qtyvalue.text = it[position].quantity.toString()
-                    holder.binding.tvprice.text = "$${productsubtotal.toString()}"
 
-                    //productMinusOnCartListener(it[position])
+
                 }
             }
         }
@@ -54,13 +44,6 @@ class CartViewAdapter (val cartItems: ArrayList<Cart>?, val imageLoader: ImageLo
 
     override fun getItemCount() = cartItems?.size?: 0
 
-
-
-
-    fun getvalues(myholder: CartViewHolder) {
-        val totalqty = myholder.binding.qtyvalue
-        val totalprice = myholder.binding.tvprice
-    }
 
     lateinit var productAddOnCartListener: (Cart, Int) -> Unit
     lateinit var productMinusOnCartListener: (Cart) -> Unit

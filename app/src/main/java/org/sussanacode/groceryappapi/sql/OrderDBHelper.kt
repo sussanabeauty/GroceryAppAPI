@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB", null, 2){
+class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB", null, 1){
 
     override fun onCreate(mydb: SQLiteDatabase?) {
 
@@ -65,19 +65,5 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB
         )"""
 
 
-
-//        const val CREATE_TABLE_ORDER_QUERY = """
-//            CREATE TABLE `order` (
-//            orderID INTEGER PRIMARY KEY AUTOINCREMENT,
-//            product_name TEXT,
-//            product_price DOUBLE,
-//            product_image TEXT,
-//            order_total DOUBLE,
-//            productID INTEGER,
-//
-//            FOREIGN KEY (productID)
-//            REFERENCES Cart (productID)
-//            ON UPDATE RESTRICT
-//            ON DELETE RESTRICT)"""
     }
 }

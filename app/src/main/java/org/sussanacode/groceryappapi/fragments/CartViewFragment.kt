@@ -56,8 +56,6 @@ class CartViewFragment: Fragment() {
         imageLoader = ImageLoader(requestQueue, cache)
         cartDao =  CartDAO(requireActivity())
 
-        // cartAdapter = CartViewAdapter(cartList, imageLoader)
-
 
         binding.rvcartitem.layoutManager = LinearLayoutManager(context)
 
@@ -141,7 +139,6 @@ class CartViewFragment: Fragment() {
 
         }else{ return }
 
-//        displaycartItem()
 
     }
 
@@ -165,50 +162,7 @@ class CartViewFragment: Fragment() {
 
         }
 
-        //setupAddListener()
-//        setUpMinusListener()
-
     }
-
-    //  private fun setUpMinusListener() {
-
-//        cartAdapter.setOnIncrementProductListener { cart ->
-//            val numquanty = cart.quantity + 1
-//            val productsubtotal = cart.quantity * cart.productprice
-//
-//            cart.quantity = numquanty
-//            cart.productprice = productprice
-//
-//            Toast.makeText(context, "You click minus button", Toast.LENGTH_LONG).show()
-//
-////            binding.qtyvalue.text = cart.quantity.toString()
-////            binding.tvprice.text = "$${productsubtotal.toString()}"
-//        }
-
-    // }
-
-//    private fun setupAddListener() {
-//
-//        cartAdapter.setOnAddProductListener { cart, position ->
-//
-//            cart.quantity += 1
-//            val productsubtotal = cart.quantity * cart.productprice
-//
-//
-//           // cartAdapter.totalqty.text = cart.quantity.toString()
-//          //  cartAdapter.totalprice.text = "$${productsubtotal.toString()}"
-//
-//        //    holder.binding.qtyvalue.text = it[position].quantity.toString()
-////            holder.binding.tvprice.text = "$${productsubtotal.toString()}"
-//
-//
-//            Toast.makeText(context, "You click add button", Toast.LENGTH_LONG).show()
-//
-////            binding.qtyvalue.text = cart.quantity.toString()
-////            binding.tvprice.text = "$${productsubtotal.toString()}"
-//        }
-//
-//    }
 
 
 

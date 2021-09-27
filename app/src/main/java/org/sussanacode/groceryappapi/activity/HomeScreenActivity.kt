@@ -61,12 +61,10 @@ class HomeScreenActivity : AppCompatActivity() {
 
         }
 
-
         //send productname to cart fragment
         productFragment.setOnClickAddProduct{
             cartFragment.getproductByName(it)
             loadCartView(it)
-
         }
 
 
@@ -169,16 +167,6 @@ class HomeScreenActivity : AppCompatActivity() {
             return true
         }
 
-//        when(item.itemId){
-//            R.id.action_cart -> {
-//                supportFragmentManager.beginTransaction()
-//                    .add(R.id.fragment_container, cartFragment).commit()}
-//                    //.addToBackStack("ProductFragment").commit()}
-//
-//                //return true
-//
-//
-//        }
         if(item.itemId == R.id.action_cart){
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, cartFragment)

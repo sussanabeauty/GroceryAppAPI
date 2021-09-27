@@ -22,7 +22,6 @@ class BillingDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityBillingDetailBinding
     lateinit var requestQueue: RequestQueue
     lateinit var addressDao: AddressDao
-   // var isPrimary: Int = 0
 
 
 
