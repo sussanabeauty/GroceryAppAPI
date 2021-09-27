@@ -25,7 +25,7 @@ class PaymentDao (val context: Context) {
             paymentValues.put("card_number", cardinfo.cardNumnber)
             paymentValues.put("expiration_date", cardinfo.expirationDt)
             paymentValues.put("cvv_code", cardinfo.code)
-
+            paymentValues.put("isPrimary", cardinfo.isPrimary)
 
             val cardID: Long = mydb.insert("payment", null, paymentValues)
             return cardID != -1L
@@ -35,6 +35,8 @@ class PaymentDao (val context: Context) {
             return false
         }
     }
+
+
 
     fun getPayment(): ArrayList<Payment>? {
         try {
@@ -49,9 +51,9 @@ class PaymentDao (val context: Context) {
                 val cardNumber = paymentCursor.getLong(2)
                 val expireDT = paymentCursor.getString(3)
                 val cvvcode = paymentCursor.getString(4)
+                val isPrimary = paymentCursor.getInt(5)
 
-
-                val payment = Payment(cardID, holdername, cardNumber, expireDT, cvvcode)
+                val payment = Payment(cardID, holdername, cardNumber, expireDT, cvvcode, isPrimary)
                 paymentList.add(payment)
             }
             return paymentList

@@ -79,8 +79,9 @@ class ProductFragment : Fragment() {
                             val productImg = productObj. getString("image");
                             val productimgUrl = "https://rjtmobile.com/grocery/images/$productImg"
                             val subcatID = productObj.getInt("subId")
+                            val productID = productObj.getString("_id")
 
-                            val product = Product(subcatID, productname, productimgUrl, productprice)
+                            val product = Product(subcatID, productID,  productname, productimgUrl, productprice)
                             products.add(product)
                         }
                         productAdapter = ProductAdapter(products, imageLoader)

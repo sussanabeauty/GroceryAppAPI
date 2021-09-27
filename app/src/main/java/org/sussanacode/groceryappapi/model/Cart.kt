@@ -1,10 +1,15 @@
 package org.sussanacode.groceryappapi.model
 
 data class Cart(
-    //val cartD: Long,
-    val productID: Long,
+    val cartID: Long,
+    val productID: String,
     val productname: String,
     var quantity: Int,
     val productImage: String,
-    var productprice: Double
+    var productprice: Double,
+//    var itemnumber: Int,
+//    var subtotal : Double
+
+
 )
+

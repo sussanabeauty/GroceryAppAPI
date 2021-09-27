@@ -28,5 +28,6 @@
     <string name="orderID">Order Id</string>
     <string name="order_date">Order Date</string>
     <string name="payment_summary">Payment Summary</string>
+    <string name="delivery_address_number">House Number</string>
 
 </resources>

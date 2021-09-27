@@ -62,7 +62,6 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncheckout"
-
         android:textColor="@color/black"
         android:background="#e6b800"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"

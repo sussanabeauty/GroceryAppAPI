@@ -14,15 +14,18 @@ import org.sussanacode.groceryappapi.sql.CartDAO
 class CartViewHolder (val binding: HolderCartBinding) : RecyclerView.ViewHolder(binding.root)
 {
 
+
     fun bind(cart: Cart, imageLoader: ImageLoader){
         binding.tvProdname.text = cart.productname
         binding.qtyvalue.text = cart.quantity.toString()
-        binding.tvprice.text = "$${cart.productprice.toString()}"
+        val subtotal = cart.productprice * cart.quantity
+        binding.tvprice.text = "$${subtotal.toString()}"
 
 
         binding.btnincrementItem.setOnClickListener{
             cart.quantity += 1
             val productsubtotal = cart.quantity * cart.productprice
+
             binding.qtyvalue.text = cart.quantity.toString()
             binding.tvprice.text = "$${productsubtotal.toString()}"
         }
@@ -38,5 +41,19 @@ class CartViewHolder (val binding: HolderCartBinding) : RecyclerView.ViewHolder(
         binding.ivprodImg.setImageUrl(cart.productImage, imageLoader)
 
     }
+
+
+
+//    fun updateDetails(cartItems: ArrayList<Cart>, cart: Cart)
+//    {
+//        cart.subtotal = cart.productprice * cart.quantity
+//        binding.tvprice.text = "$${cart.subtotal.toString()}"
+//        binding.qtyvalue.text = cart.quantity.toString()
+//        val newTotal:Double = cartItems.sumOf { it.subtotal }
+//        val newQty:Int = cartItems.sumOf {it.quantity}
+//        println(newTotal)
+//        println(newQty)
+//
+//    }
 
 }

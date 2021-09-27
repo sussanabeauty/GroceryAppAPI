@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.BillingDetailActivity">
 
-
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btnback"
         android:src="@drawable/ic_arrow_back_"
@@ -68,12 +67,22 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/etdeliveryaddress"
-            android:hint="@string/delivery_address"
+            android:id="@+id/etdeliveryaddressnum"
+            android:hint="@string/delivery_address_number"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/text_view"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <EditText
+            android:id="@+id/etdeliveryaddress"
+            android:hint="@string/address"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_view"
+            app:layout_constraintStart_toEndOf="@id/etdeliveryaddressnum"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -114,6 +123,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Switch
+        android:id="@+id/isPrimary"
+        android:text="isPrimary  "
+        android:textSize="25dp"
+        android:layout_margin="@dimen/common_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
     <androidx.appcompat.widget.AppCompatButton

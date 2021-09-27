@@ -12,8 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryAppAPI.NoActionBar">
         <activity
-            android:name=".activity.OrderSummeryActivity"
-            android:exported="true" />
+            android:name=".activity.TrackOrderActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
+        <activity
+            android:name=".activity.OrderSummaryActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+            />
         <activity
             android:name=".activity.AddPaymentActivity"
             android:exported="true" />
@@ -25,10 +31,13 @@
             android:exported="true" />
         <activity
             android:name=".activity.BillingDetailActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".activity.CheckoutActivity"
-            android:exported="true" /> <!-- android:theme="@style/Theme.GroceryAppAPI"> -->
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+            /> <!-- android:theme="@style/Theme.GroceryAppAPI"> -->
         <activity
             android:name=".activity.HomeScreenActivity"
             android:exported="true" />

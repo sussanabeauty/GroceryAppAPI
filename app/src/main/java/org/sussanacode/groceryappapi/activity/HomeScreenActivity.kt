@@ -18,17 +18,13 @@ import org.sussanacode.groceryappapi.model.Subcategory
 
 class HomeScreenActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeScreenBinding
-   // lateinit var tabsAdapter: TabsAdapter
     lateinit var categoryFragment: CategoryFragment
     lateinit var subcatFragment: SubcategoryFragment
     lateinit var cartFragment: CartViewFragment
     lateinit var productFragment: ProductFragment
     lateinit var currentFragment: Fragment
 
-
     lateinit var navtoggle: ActionBarDrawerToggle
-
-
     val fragments = ArrayList<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,14 +81,10 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
         //Action bar toggle
-        navtoggle = ActionBarDrawerToggle(this, binding.drawerLayout,
-            R.string.nav_open,
-            R.string.nav_close
-        )
+        navtoggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.nav_open, R.string.nav_close)
         binding.drawerLayout.addDrawerListener(navtoggle)
         navtoggle.syncState()
 
-        //currentFragment = ProfileFragment()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.navMenu.setNavigationItemSelectedListener {
@@ -107,14 +99,13 @@ class HomeScreenActivity : AppCompatActivity() {
                 }
 
                 R.id.action_orders ->{
-                    currentFragment = OrdersFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, currentFragment).commit()
-
+                    startActivity(Intent(baseContext, OrderSummaryActivity::class.java))
+                    finish()
                 }
 
                 R.id.action_order_tracking ->{
-                    currentFragment = OrderTrackingFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, currentFragment).commit()
+                    startActivity(Intent(baseContext, TrackOrderActivity::class.java))
+                    finish()
                 }
 
                 R.id.action_help ->{
@@ -178,19 +169,23 @@ class HomeScreenActivity : AppCompatActivity() {
             return true
         }
 
-        when(item.itemId){
-            R.id.action_cart -> {
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, cartFragment).commit()}
-                    //.addToBackStack("ProductFragment").commit()}
-
-
-        }
-//        if(item.itemId == R.id.action_cart){
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.fragment_container, cartFragment)
-//                .addToBackStack("ProductFragment").commit()
+//        when(item.itemId){
+//            R.id.action_cart -> {
+//                supportFragmentManager.beginTransaction()
+//                    .add(R.id.fragment_container, cartFragment).commit()}
+//                    //.addToBackStack("ProductFragment").commit()}
+//
+//                //return true
+//
+//
 //        }
+        if(item.itemId == R.id.action_cart){
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, cartFragment)
+                .addToBackStack("ProductFragment").commit()
+
+            return true
+        }
 
         return super.onOptionsItemSelected(item)
     }

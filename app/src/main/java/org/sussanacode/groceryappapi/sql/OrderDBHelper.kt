@@ -31,12 +31,13 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB
     companion object {
         const val CREATE_TABLE_CART_QUERY = """
             CREATE TABLE cart (
-            productID INTEGER PRIMARY KEY AUTOINCREMENT,
+            cartID INTEGER PRIMARY KEY AUTOINCREMENT,
+            productID TEXT,
             product_name TEXT, 
             quantity INTEGER,
             product_image TEXT,
-            product_price DOUBLE)
-        """
+            product_price DOUBLE
+        )"""
 
 
         const val CREATE_TABLE_ADDRESS_QUERY = """
@@ -45,11 +46,13 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB
             user_name TEXT, 
             user_phoneno INTEGER,
             email TEXT,
+            houseNo INTEGER,
             address TEXT,
             city TEXT,
             state TEXT,
-            zip TEXT)
-            """
+            zip TEXT,
+            isPrimary INTEGER NOT NULL DEFAULT 0 CHECK(isPrimary IN (0, 1))
+        )"""
 
         const val CREATE_TABLE_PAYMENT_QUERY = """
             CREATE TABLE payment (
@@ -57,11 +60,12 @@ class OrderDBHelper (val context: Context): SQLiteOpenHelper(context, "GroceryDB
             holder_name TEXT, 
             card_number INTEGER,
             expiration_date TEXT,
-            cvv_code TEXT)"""
+            cvv_code TEXT,
+            isPrimary INTEGER NOT NULL DEFAULT 0 CHECK(isPrimary IN (0, 1))
+        )"""
 
 
 
-//        userId INTEGER PRIMARY KEY AUTOINCREMENT,
 //        const val CREATE_TABLE_ORDER_QUERY = """
 //            CREATE TABLE `order` (
 //            orderID INTEGER PRIMARY KEY AUTOINCREMENT,

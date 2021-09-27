@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/common_padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvorderid"
+            android:text="12356uiitrewwyu"
+            android:layout_margin="25dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvtotalprice"
+            android:text="$09940"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_margin="25dp" />
+
+        <TextView
+            android:id="@+id/tvexpecteddelivery"
+            android:text="09/25/2021"
+            android:layout_margin="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

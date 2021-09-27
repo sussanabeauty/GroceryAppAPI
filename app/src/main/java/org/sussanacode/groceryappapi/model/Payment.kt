@@ -7,5 +7,6 @@ data class Payment(
     val nameoncard: String,
     val cardNumnber: Long,
     val expirationDt: String,
-    val code: String
+    val code: String,
+    var isPrimary: Int
 ):Serializable

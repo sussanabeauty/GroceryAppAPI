@@ -1,12 +1,10 @@
 package org.sussanacode.groceryappapi.sql
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
-import org.sussanacode.groceryappapi.model.Cart
 import org.sussanacode.groceryappapi.model.ShippingAddress
 import java.sql.SQLException
 
@@ -30,6 +28,7 @@ class AddressDao(val context: Context) {
             addressValues.put("city", address.city)
             addressValues.put("state", address.state)
             addressValues.put("zip", address.zip)
+            addressValues.put("isPrimary", address.isPrimary)
 
             val addressID: Long = mydb.insert("shippingaddress", null, addressValues)
             return addressID != -1L
@@ -39,6 +38,7 @@ class AddressDao(val context: Context) {
             return false
         }
     }
+
 
 
     fun getAddress(): ArrayList<ShippingAddress>? {
@@ -53,13 +53,15 @@ class AddressDao(val context: Context) {
                 val name = addressCursor.getString(1)
                 val userphone = addressCursor.getString(2)
                 val email = addressCursor.getString(3)
-                val address = addressCursor.getString(4)
-                val city = addressCursor.getString(5)
-                val state = addressCursor.getString(6)
-                val zip = addressCursor.getString(7)
+                val houseNo = addressCursor.getInt(4)
+                val address = addressCursor.getString(5)
+                val city = addressCursor.getString(6)
+                val state = addressCursor.getString(7)
+                val zip = addressCursor.getString(8)
+                val isPrimary = addressCursor.getInt(9)
 
 
-                val addrs = ShippingAddress(addressID, name, userphone, email, address, city, state, zip)
+                val addrs = ShippingAddress(addressID, name, userphone, email, houseNo, address, city, state, zip, isPrimary)
                 addressList.add(addrs)
             }
             return addressList

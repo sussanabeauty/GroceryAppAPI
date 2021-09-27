@@ -72,6 +72,15 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/text_view" />
 
+    <Switch
+        android:id="@+id/isPrimary"
+        android:text="isPrimary  "
+        android:textSize="25dp"
+        android:layout_margin="@dimen/common_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 
     <androidx.appcompat.widget.AppCompatButton

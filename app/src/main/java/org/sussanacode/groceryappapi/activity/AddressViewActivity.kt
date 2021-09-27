@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.sussanacode.groceryappapi.R
 import org.sussanacode.groceryappapi.adapters.AddressAdapter
 import org.sussanacode.groceryappapi.databinding.ActivityAddressViewBinding
 import org.sussanacode.groceryappapi.model.ShippingAddress
@@ -24,6 +26,7 @@ class AddressViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddressViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.btnAddAddress.setOnClickListener {
             startActivity(Intent(baseContext, BillingDetailActivity::class.java))

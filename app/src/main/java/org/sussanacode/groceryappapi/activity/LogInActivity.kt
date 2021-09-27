@@ -74,11 +74,13 @@ class LogInActivity : AppCompatActivity() {
 
                 if(response.has("token")){
                     val username = response.getJSONObject("user").getString("email")
+                    val firstname = response.getJSONObject("user").getString("firstName")
                     val pass = response.getJSONObject("user").getString("password")
                     val userID = response.getJSONObject("user").getString("_id")
 
                     val sharedPreferences = getSharedPreferences("user_checked", MODE_PRIVATE)
                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                    editor.putString("User_FIRSTNAME", firstname)
                     editor.putString("User_Key", username)
                     editor.putString("Pass_Key", pass)
                     editor.putString("USER_ID", userID)

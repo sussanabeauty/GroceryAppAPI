@@ -99,14 +99,11 @@ class RegisterActivity : AppCompatActivity() {
                 binding.pbuser.visibility = View.GONE
                 error.printStackTrace()
                 Toast.makeText(baseContext, "Error $error", Toast.LENGTH_LONG).show()
-            }
-        )
-
+            })
         requestQueue.add(jsonRequest)
         binding.pbuser.visibility = View.VISIBLE
 
     }
-
 
     companion object{
         const val REGISTER_URL = "https://grocery-second-app.herokuapp.com/api/auth/register"
